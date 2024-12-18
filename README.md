@@ -1,7 +1,7 @@
 # One Acre
 
 ## Installation
-    Clone the repository:
+## Clone the repository:
    git clone https://github.com/LYROS-MURALISATHANABOINA/one-acre.git
 ## Navigate to the directory:
     cd one-acre

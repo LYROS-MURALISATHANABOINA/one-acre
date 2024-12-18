@@ -5,50 +5,54 @@ import "../App.css";
 
 const LandCard = ({ land }) => {
 
-  const { 
-    land_media, 
-    division_info, 
-    price_per_acre_crore, 
-    total_land_size_in_acres, 
+  const {
+    land_media,
+    division_info,
+    price_per_acre_crore,
+    total_land_size_in_acres,
   } = land;
 
   const landImages = land_media
     .filter((media) => media.media_type === "image")
     .map((media) => media.image);
 
-    const locationDetails = () => {
-        const mandal = division_info.find((info) => info.division_type === "mandal")?.name;
-        const district = division_info.find((info) => info.division_type === "district")?.name;
-      
-        if (mandal && district) {
-          return `${mandal}, ${district} (dt)`;
-        }
-        return "Location not available";
-    };
+  const locationDetails = () => {
+    const mandal = division_info.find((info) => info.division_type === "mandal")?.name;
+    const district = division_info.find((info) => info.division_type === "district")?.name;
 
-    const formatLandSize = (acres, guntas) => {
-        if (acres === 0) {
-          return `${guntas} Guntas`;
-        } else {
-          const totalAcres = acres + guntas / 40;
-          return `${totalAcres.toFixed(2)} Acres`;
-        }
-    };
+    if (mandal && district) {
+      return `${mandal}, ${district} (dt)`;
+    }
+    return "Location not available";
+  };
 
-      const formatPrice = (crore, lakh) => {
-        if (crore === 0) {
-          return `${lakh} lakh`;
-        } else {
-          const totalcrore = crore + lakh / 100;
-          return `${totalcrore.toFixed(2)} crore`;
-        }
-      };
-      
-      
+  const formatLandSize = (acres, guntas) => {
+    if (acres === 0) {
+      return `${guntas} Guntas`;
+    } else {
+      const totalAcres = acres + guntas / 40;
+      return `${totalAcres.toFixed(2)} Acres`;
+    }
+  };
+
+  const formatPrice = (crore, lakh) => {
+    if (crore === 0) {
+      return `${lakh} lakh`;
+    } else {
+      const totalcrore = crore + lakh / 100;
+      return `${totalcrore.toFixed(2)} crore`;
+    }
+  };
+
+
 
   return (
     <div className="land-card">
-      <Carousel showThumbs={false}  >
+      <Carousel
+        showStatus={false}
+        showThumbs={false}
+        showIndicators={false}
+     >
         {landImages.length > 0 ? (
           landImages.map((img, index) => (
             <div key={index}>
